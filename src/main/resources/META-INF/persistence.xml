@@ -1,0 +1,16 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:p="http://www.springframework.org/schema/p"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="
+             http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+             version="2.0">
+
+    <persistence-unit name="AdvBoard" transaction-type="RESOURCE_LOCAL">
+
+        <class>advboard.data.User</class>
+        <class>advboard.data.Advertisement</class>
+
+    </persistence-unit>
+</persistence>

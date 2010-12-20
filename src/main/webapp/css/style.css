@@ -1,0 +1,31 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+body, td, th {
+    color: #000000;
+    font-family: "Luxi Sans", Arial, sans-serif;
+    font-size: 10pt;
+}
+
+div#main {
+    padding: 8px;
+}
+
+a, a:visited {
+    color: #0000FF;
+}
+
+#user {
+    font-size: 13px;
+    padding-top: 1px !important;
+    padding-bottom: 7px !important;
+    text-align: left;
+}
+
+#staff {
+    text-align: center;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+    <security:global-method-security secured-annotations="enabled"/>
+
+    <security:http use-expressions="true">
+        <!-- Restrict URLs based on role -->
+        <security:intercept-url pattern="/admin/*" access="hasRole('ADMIN')"/>
+        <security:intercept-url pattern="/advertiser/*" access="hasRole('ADVERTISER')"/>
+        <security:intercept-url pattern="/css/**" filters="none"/>
+        <security:intercept-url pattern="/*" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="denyAll"/>
+
+        <!-- Override default login and logout config -->
+        <security:form-login login-page="/login" authentication-failure-url="/login?error"/>
+        <security:logout logout-success-url="/index.html"/>
+    </security:http>
+
+    <security:authentication-manager>
+
+        <!-- First auth provider: real users(an instance of advboard.security.SecurityUser) -->
+        <security:authentication-provider user-service-ref="daoUserDetailsService">
+            <security:password-encoder hash="md5"/>
+        </security:authentication-provider>
+
+        <!-- Second auth provider: predefined users (for debug purposes, instance of org.springframework.security.core.userdetails.User)-->
+        <security:authentication-provider>
+            <!--<security:password-encoder hash="md5"/>-->
+            <security:user-service>
+                <security:user name="david" password="pass"
+                               authorities="ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+
+
+    </security:authentication-manager>
+
+    <!--UserDetails provider-->
+    <bean id="daoUserDetailsService" class="advboard.security.DaoUserDetailsService"/>
+
+</beans>
