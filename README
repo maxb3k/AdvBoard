@@ -1,1 +1,14 @@
-WRITEME
+Simple "Advertisements Board" project created to test some technologies.
+Used:
+1. Tomcat 6.
+2. Spring Security.
+    - custom UserDetailsService(DaoUserDetailsService) which delegates user info requests to UserDAO.
+    - isAnonymous function in SpringSecurityUtils.tld.
+    - custom login page
+3. JPA via Hibernate.
+    - 2 simple entities. Collection of enums. Ether Criteria Api and JPQL.
+    - Transactional integration tests for DAOs.
+4. Stripes as MVC.
+    - Custom ActionResolver, BaseActionBean
+    - Implemented layout.jsp
+    - JSP with JSTL, EL.
